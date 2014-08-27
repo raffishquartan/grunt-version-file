@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+tmp
+.project
+.settings
+*.sublime-workspace
+*~
+test/coverage/*
+coveralls.token
