@@ -1,9 +1,8 @@
 # grunt-version-file
 
-> ONE LINE SUMMARY
+> Generates code provenance to a JSON file for deployment alongside the application
 
-Intro text
-
+Knowing exactly which version of the application has been deployed or is stored in a deployment archive can be crucial for debugging but is difficult without careful record keeping. One solution to this problem is to automatically generate a file with code provenance information that is deployed alongside the application. Version 0.1.0 of the grunt-version-file task writes build datetime, the application version, and the git commit and repository status (dirty or clean) to a JSON file.
 
 ## Getting Started
 
@@ -21,17 +20,18 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-version-file');
 ```
 
-
 ## The "version_file" task
 
-### Overview
+### Overview and Usage
 In your project's Gruntfile, add a section named `version_file` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
     version_file: {
       make: {
-        TODO
+        options: {
+          out: ["build/out/version.json"]
+        }
       }
     }
 });
@@ -39,15 +39,10 @@ grunt.initConfig({
 
 ### Options
 
-#### options.OPTION_NAME
+#### options.out
 Type: `String`
-Default value: None, this is normally not specified in the Gruntfile but via the command line
-
-### Usage Examples
-
-See the unit tests for a range of examples. In normal usage TODO
-
-
+Purpose: Output file path to write to
+Default value: None, required
 
 ## Contributing
 
@@ -57,7 +52,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 The following are bad, please feel free to fix them yourself :)
 
-- TODO
+- Nothing. No code written so nothing could be smelly.
 
 ## Changelog
 
