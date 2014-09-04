@@ -9,5 +9,9 @@
  "use strict";
 
 describe("GeneratorManager", function() {
+  it.skip("builds generat.skipors for each file in constructor options.generator_dir directory", function() {
+  });
 
+  it.skip("allows iteration over all generators", function() {
+  });
 });
