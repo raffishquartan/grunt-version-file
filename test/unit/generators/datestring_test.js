@@ -16,14 +16,15 @@ describe("DatestringGenerator", function() {
   var should = require("should");
   var DatestringGenerator = require("../../../lib/generators/datestring");
 
-  it.skip("specifies a label method that returns string", function() {
+  it.skip("specifies a label method that returns a string", function() {
     var dg = new DatestringGenerator();
     dg.label.should.be.a.Function;
     dg.label().should.be.a.String;
   });
 
-  it.skip("specifies a value method that returns a promise", function() {
+  it.skip("specifies a value method that returns a string", function() {
     var dg = new DatestringGenerator();
     dg.value.should.be.a.Function;
+    dg.value().should.be.a.String;
   });
 });

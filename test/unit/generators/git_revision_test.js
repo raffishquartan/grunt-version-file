@@ -16,14 +16,15 @@ describe("GitRevisionGenerator", function() {
   var should = require("should");
   var GitRevisionGenerator = require("../../../lib/generators/git_revision");
 
-  it.skip("specifies a label method that returns string", function() {
+  it.skip("specifies a label method that returns a string", function() {
     var dg = new GitRevisionGenerator();
     dg.label.should.be.a.Function;
     dg.label().should.be.a.String;
   });
 
-  it.skip("specifies a value method that returns a promise", function() {
+  it.skip("specifies a value method that returns a string", function() {
     var dg = new GitRevisionGenerator();
     dg.value.should.be.a.Function;
+    dg.value().should.be.a.String;
   });
 });

@@ -16,14 +16,15 @@ describe("NpmVersionGenerator", function() {
   var should = require("should");
   var NpmVersionGenerator = require("../../../lib/generators/npm_version");
 
-  it.skip("specifies a label method that returns string", function() {
+  it.skip("specifies a label method that returns a string", function() {
     var dg = new NpmVersionGenerator();
     dg.label.should.be.a.Function;
     dg.label().should.be.a.String;
   });
 
-  it.skip("specifies a value method that returns a promise", function() {
+  it.skip("specifies a value method that returns a string", function() {
     var dg = new NpmVersionGenerator();
     dg.value.should.be.a.Function;
+    dg.value().should.be.a.String;
   });
 });
