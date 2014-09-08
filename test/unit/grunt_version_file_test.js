@@ -13,8 +13,6 @@ describe("GruntVersionFile", function() {
   var grunt = require("grunt");
   var GruntVersionFile = require("../../lib/grunt_version_file");
 
-
-
   it("registers itself with grunt", function() {
     should.exist(GruntVersionFile.registerWithGrunt);
     GruntVersionFile.registerWithGrunt(grunt);
