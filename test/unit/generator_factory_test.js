@@ -12,26 +12,26 @@
 
 describe("GeneratorBase", function() {
   var should = require("should");
-  var GeneratorBase = require("../../lib/generator_base.js");
+  var GeneratorBase = require("../../lib/generator_factory.js");
 
   it.skip("has a create method", function() {
-  })
-
-  it.skip("has a create method that requires options.label", function() {
   });
 
-  it.skip("has a create method that requires options.value", function() {
+  it.skip("... that requires options.label", function() {
   });
 
-  it.skip("creates generator objects with a default init function", function() {
+  it.skip("... that requires options.value", function() {
   });
 
-  it.skip("has a create method that allows options.init to specify a different init function", function() {
-  })
-
-  it.skip("creates generator objects with a value function that returns a promise", function() {
+  it.skip("... that allows options.init to specify an init function", function() {
   });
 
-  it.skip("creates generator objects with a label function that returns string", function() {
+  it.skip("creates generators with a default init function", function() {
+  });
+
+  it.skip("creates generators with a value function that returns a promise", function() {
+  });
+
+  it.skip("creates generators with a label function that returns string", function() {
   });
 });

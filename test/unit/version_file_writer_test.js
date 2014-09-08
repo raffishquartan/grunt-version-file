@@ -9,5 +9,9 @@
  "use strict";
 
 describe("VersionFileWriter", function() {
+  it.skip("has a write_file method", function() {
+  });
 
+  it.skip("write_file requires options.json_creator", function() {
+  });
 });
