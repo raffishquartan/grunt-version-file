@@ -14,7 +14,7 @@
 
 describe("DatestringGenerator", function() {
   var should = require("should");
-  var DatestringGenerator = require("../../../lib/generators/datestring_generator");
+  var DatestringGenerator = require("../../../lib/generators/datestring");
 
   it.skip("specifies a label method that returns string", function() {
     var dg = new DatestringGenerator();
