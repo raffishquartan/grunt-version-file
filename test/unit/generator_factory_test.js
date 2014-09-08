@@ -10,7 +10,7 @@
 
  "use strict";
 
-describe("GeneratorBase", function() {
+describe("GeneratorFactory", function() {
   var should = require("should");
   var GeneratorBase = require("../../lib/generator_factory.js");
 
