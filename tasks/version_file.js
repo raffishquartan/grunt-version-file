@@ -8,5 +8,5 @@
 
 "use strict";
 
-var grunt_version_file = require("../lib/grunt_version_file.js");
-module.exports = grunt_version_file.register_with_grunt;
+var grunt_version_file_task = require("../lib/grunt_version_file");
+module.exports = grunt_version_file_task.register_with_grunt;
