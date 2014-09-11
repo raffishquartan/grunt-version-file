@@ -61,11 +61,19 @@ describe("GeneratorFactory", function() {
     generator.value.should.be.a.Function;
   });
 
-  it("... that allows options.init to specify an init function", function() {
+  it("... that allows options.init", function() {
     var gf = new GeneratorFactory();
     var config_with_init = { label: function() {}, value: function() {}, init: function() {} };
     var generator = gf.create(config_with_init);
     generator.init.should.be.a.Function;
+  });
+
+  it("... that requires options.init to be a function", function() {
+    var gf = new GeneratorFactory();
+    var config_with_nonfunction_init = { label: function() {}, value: function() {}, init: "init" };
+    (function() {
+      gf.create(config_with_nonfunction_init);
+    }).should.throw();
   });
 
   it("... that creates generators with a default init function", function() {
