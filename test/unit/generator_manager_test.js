@@ -10,57 +10,111 @@
 // Allow expressions (...should.be.a.Foo;)
 /*jshint -W030 */
 
- "use strict";
+"use strict";
 
 describe("GeneratorManager", function() {
   var GeneratorManager = require("../../lib/generator_manager");
 
+  var GENERATOR_DIR_VALID = "generators";
+  var GENERATOR_LIST_VALID = ["datestring", "npm_version"];
+
+  var CONFIG_VALID = {
+    generator_dir: GENERATOR_DIR_VALID,
+    generator_list: GENERATOR_LIST_VALID
+  };
+
   it("requires an options.generator_dir constructor argument", function() {
     (function() {
-      var config_without_generator_dir = { generator_list: ["foo", "bar"] };
-      var gm = new GeneratorManager(config_without_generator_dir);
+      var gm = new GeneratorManager({
+        generator_list: GENERATOR_LIST_VALID
+      });
     }).should.throw();
   });
 
   it("throws an error when options.generator_dir is not a string", function() {
     (function() {
-      var config_without_generator_dir_string = { generator_list: ["foo", "bar"], generator_dir: 1 };
-      var gm = new GeneratorManager(config_without_generator_dir_string);
+      var gm = new GeneratorManager({
+        generator_list: GENERATOR_LIST_VALID,
+        generator_dir: 1
+      });
     }).should.throw();
   });
 
-  it.skip("throws an error when options.generator_dir does not exist", function() {
+  it("throws an error when options.generator_dir does not exist", function() {
+    (function() {
+      var gm = new GeneratorManager({
+        generator_list: GENERATOR_LIST_VALID,
+        generator_dir: "does-not-exist"
+      });
+    }).should.throw();
   });
 
   it("requires an options.generator_list constructor argument", function() {
-  it("requires an options.generator_dir constructor argument", function() {
     (function() {
-      var config_without_generator_list = { generator_dir: "foo" };
-      var gm = new GeneratorManager(config_without_generator_list);
+      var gm = new GeneratorManager({
+        generator_dir: GENERATOR_DIR_VALID
+      });
     }).should.throw();
-  });
   });
 
   it("throws an error when options.generator_list is not an array", function() {
     (function() {
-      var config_without_generator_list_array = { generator_dir: "foo", generator_list: "foo" };
-      var gm = new GeneratorManager(config_without_generator_list_array);
+      var gm = new GeneratorManager({
+        generator_dir: GENERATOR_DIR_VALID,
+        generator_list: "datestring"
+      });
     }).should.throw();
   });
 
-  it.skip("builds a generator for each entry in options.generator_dir", function() {
+  it("throws an error when options.generator_list contains duplicates", function() {
+    (function() {
+      var gm = new GeneratorManager({
+        generator_dir: GENERATOR_DIR_VALID,
+        generator_list: GENERATOR_LIST_VALID.concat(GENERATOR_LIST_VALID)
+      });
+    }).should.throw();
   });
 
-  it.skip("throws an error when a gen. list member is not in generator_dir", function() {
+  it("throws an error when options.generator_list is empty", function() {
+    (function() {
+      var gm = new GeneratorManager({
+        generator_dir: GENERATOR_DIR_VALID,
+        generator_list: []
+      });
+    }).should.throw();
+  });
+
+  it("returns the correct generator_map", function() {
+    var gm = new GeneratorManager(CONFIG_VALID);
+    var map = gm.generator_map();
+    var expected_length = GENERATOR_LIST_VALID.length;
+    Object.keys(map).length.should.equal.expected_length;
+    for(var i in GENERATOR_LIST_VALID) {
+      var gen = GENERATOR_LIST_VALID[i];
+      map[gen].should.not.equal.undefined;
+    }
+  });
+
+  it("throws an error when a gen. list member is not in generator_dir", function() {
+    (function() {
+      var gm = new GeneratorManager({
+        generator_dir: GENERATOR_DIR_VALID,
+        generator_list: ["not_valid_generator"]
+      });
+    }).should.throw();
   });
 
   it("throws an error when any unexpected options fields are defined", function() {
     (function() {
-      var config_with_extra_entry = { generator_dir: "foo", generator_list: ["bar", "baz"], extra: 1234 };
-      var gm = new GeneratorManager(config_with_extra_entry);
+      var gm = new GeneratorManager({
+        generator_dir: GENERATOR_DIR_VALID,
+        generator_list: GENERATOR_LIST_VALID,
+        extra: 1234
+      });
     }).should.throw();
   });
 
   it.skip("allows iteration over all generators", function() {
+    var gm = new GeneratorManager(CONFIG_VALID);
   });
 });
