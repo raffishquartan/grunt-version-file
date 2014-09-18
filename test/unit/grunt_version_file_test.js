@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
- "use strict";
+"use strict";
 
 describe("GruntVersionFile", function() {
   var should = require("should");

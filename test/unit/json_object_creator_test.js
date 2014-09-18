@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
- "use strict";
+"use strict";
 
 describe("JsonObjectCreator", function() {
   it.skip("has a create_json method", function() {

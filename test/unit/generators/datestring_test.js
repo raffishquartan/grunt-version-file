@@ -10,7 +10,7 @@
 // Allow expressions (...should.be.a.Foo;)
 /*jshint -W030 */
 
- "use strict";
+"use strict";
 
 describe("DatestringGenerator", function() {
   var should = require("should");

@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
- "use strict";
+"use strict";
 
 describe("VersionFileWriter", function() {
   it.skip("has a write_file method", function() {
