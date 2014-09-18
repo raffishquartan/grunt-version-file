@@ -30,7 +30,9 @@ grunt.initConfig({
     version_file: {
       make: {
         options: {
-          out: ["build/out/version.json"]
+          out: ["build/out/version.json"],
+          generator_list: [],
+          generator_dir: ""
         }
       }
     }
@@ -43,6 +45,16 @@ grunt.initConfig({
 Type: `String`
 Purpose: Output file path to write to
 Default value: None, required
+
+#### options.generator_list
+Type: `Array` of ``String`
+Purpose:
+Default value:
+
+#### options.generator_dir
+Type: `String`
+Purpose:
+Default value:
 
 ## Contributing
 
