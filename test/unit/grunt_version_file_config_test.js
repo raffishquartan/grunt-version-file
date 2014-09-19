@@ -15,12 +15,12 @@
 describe("GruntVersionFileConfig", function() {
   var GruntVersionFileConfig = require("../../lib/grunt_version_file_config");
 
-  var OUT_PATH_VALID = "build/out/version.json";
+  var OUT_FILEPATH_VALID = "build/out/version.json";
   var GENERATOR_DIR_VALID = "generators";
   var GENERATOR_LIST_VALID = ["datestring", "npm_version"];
 
   var CONFIG_VALID = {
-    out: OUT_PATH_VALID,
+    out: OUT_FILEPATH_VALID,
     generator_dir: GENERATOR_DIR_VALID,
     generator_list: GENERATOR_LIST_VALID
   };
@@ -48,7 +48,7 @@ describe("GruntVersionFileConfig", function() {
 
   it("throws an error if the generator_dir parameter does not exist", function() {
     var conf = {
-      out: OUT_PATH_VALID,
+      out: OUT_FILEPATH_VALID,
       generator_list: GENERATOR_LIST_VALID
     };
     (function() {
@@ -58,7 +58,7 @@ describe("GruntVersionFileConfig", function() {
 
   it("throws an error if the generator_dir paramter is not a string", function() {
     var conf = {
-      out: OUT_PATH_VALID,
+      out: OUT_FILEPATH_VALID,
       generator_dir: 1,
       generator_list: GENERATOR_LIST_VALID
     };
@@ -69,7 +69,7 @@ describe("GruntVersionFileConfig", function() {
 
   it("throws an error if the generator_dir does not exist", function() {
     var conf = {
-      out: OUT_PATH_VALID,
+      out: OUT_FILEPATH_VALID,
       generator_dir: "foo",
       generator_list: GENERATOR_LIST_VALID
     };
@@ -80,7 +80,7 @@ describe("GruntVersionFileConfig", function() {
 
   it("throws an error if the generator_list parameter does not exist", function() {
     var conf = {
-      out: OUT_PATH_VALID,
+      out: OUT_FILEPATH_VALID,
       generator_dir: GENERATOR_DIR_VALID
     };
     (function() {
@@ -90,7 +90,7 @@ describe("GruntVersionFileConfig", function() {
 
   it("throws an error if the generator_list is not an array of string", function() {
     var conf = {
-      out: OUT_PATH_VALID,
+      out: OUT_FILEPATH_VALID,
       generator_dir: GENERATOR_DIR_VALID,
       generator_list: "datestring"
     };
@@ -99,9 +99,9 @@ describe("GruntVersionFileConfig", function() {
     }).should.throw();
   });
 
-  it("stores the correct output path for the valid test config", function() {
+  it("returns the correct output path for the valid test config", function() {
     var gvfc = new GruntVersionFileConfig(CONFIG_VALID);
-    gvfc.out_path().should.equal.OUT_PATH_VALID;
+    gvfc.out_filepath().should.equal.OUT_FILEPATH_VALID;
   });
 
   it("stores the correct generator list for the valid test config", function() {
@@ -122,7 +122,7 @@ describe("GruntVersionFileConfig", function() {
 
   it("throws an error if there are any unrecognised config fields", function() {
     var conf = {
-      out: OUT_PATH_VALID,
+      out: OUT_FILEPATH_VALID,
       generator_dir: GENERATOR_DIR_VALID,
       generator_list: GENERATOR_LIST_VALID,
       extra_field: "foo"
