@@ -13,6 +13,7 @@
 "use strict";
 
 describe("VersionFileWriter", function() {
+  var should = require("should");
   var GeneratorManager = require("../../lib/generator_manager");
   var JsonCreator = require("../../lib/json_creator");
   var VersionFileWriter = require("../../lib/version_file_writer");
@@ -23,7 +24,7 @@ describe("VersionFileWriter", function() {
       generator_list: ["datestring", "npm_version"]
     })
   });
-  var OUT_VALID = "build/out/version.json";
+  var OUT_VALID = "test/tmp/build/out/version.json";
 
   var VALID_OPTIONS = {
     json_creator: JSON_CREATOR_VALID,
@@ -36,7 +37,7 @@ describe("VersionFileWriter", function() {
     typeof(vfw.write_version_file).should.be.a.Function;
   });
 
-  it("write_version_file requires options.json_object_creator", function() {
+  it("write_version_file requires options.json_creator", function() {
     var vfw = new VersionFileWriter();
     (function() {
       vfw.write_version_file({
@@ -64,7 +65,7 @@ describe("VersionFileWriter", function() {
     }).should.throw();
   });
 
-  it.skip("writes valid options correctly", function() {
+  it("writes valid options correctly", function() {
     var vfw = new VersionFileWriter();
     vfw.write_version_file(VALID_OPTIONS);
     // TODO: After write is completed, test that written file matches expected string
