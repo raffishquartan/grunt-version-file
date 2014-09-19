@@ -8,8 +8,8 @@
 
 "use strict";
 
-describe("JsonObjectCreator", function() {
-  it.skip("has a create_json method", function() {
+describe("JsonCreator", function() {
+  it.skip("has a create_json_string method", function() {
   });
 
   it.skip("iterates over all generators in a GeneratorManager", function() {
