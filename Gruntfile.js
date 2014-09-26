@@ -67,10 +67,21 @@ module.exports = function(grunt) {
       all: {
         src: "test/coverage/lcov.info"
       }
+    },
+
+    bump: {
+      options: {
+        files: ["package.json"],
+        updateConfigs: ["pkg"],
+        commit: false,
+        createTag: false,
+        push: false
+      }
     }
   });
 
   grunt.loadTasks("tasks");
+  grunt.loadNpmTasks("grunt-bump");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-coveralls");
