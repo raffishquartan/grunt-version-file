@@ -1,6 +1,6 @@
 {
   "name": "grunt-version-file",
-  "description": "ONE LINE DESCRIPTION TODO",
+  "description": "Writes code provenance information to a JSON file for deployment alongside the application",
   "version": "0.0.0",
   "homepage": "https://github.com/raffishquartan/grunt-version-file",
   "author": {
@@ -52,6 +52,8 @@
     "grunt",
     "build",
     "git",
-    "versioning"
+    "versioning",
+    "provenance",
+    "debugging"
   ]
 }
