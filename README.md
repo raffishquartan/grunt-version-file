@@ -13,6 +13,15 @@
 
 Knowing exactly which version of the application has been deployed is crucial for debugging, but it is difficult without careful record keeping. One solution to this problem is to automatically generate a file with code provenance information that is deployed alongside the application. This plugin does that.
 
+An example version file:
+
+```js
+{
+  "datestring": "Fri Sep 27 2014 08:50:50"
+  "npm_version": "0.1.4"
+}
+```
+
 ## Getting Started
 
 This plugin requires Grunt `~0.4.4`
@@ -89,7 +98,7 @@ To add a generator create a new file in the `lib/generators` directory which exp
 
 ### Code smells
 
-The following are bad, please feel free to fix them yourself :)
+The following are bad, contributed fixes welcome :)
 
 - The tests don't use mocks, they should
 - The generator init functions are not executed at construction and initialisation but just before the value and label methods are called.
@@ -98,6 +107,7 @@ The following are bad, please feel free to fix them yourself :)
 
 - _0.1.0_ - Initial release
 - _0.1.1_ - Readme fixes and Travis CI
+- _0.2.0_ - Async generators
 
 ## License
 
