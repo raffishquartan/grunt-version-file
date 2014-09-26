@@ -1,7 +1,7 @@
 {
   "name": "grunt-version-file",
   "description": "Writes code provenance information to a JSON file for deployment alongside the application",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/raffishquartan/grunt-version-file",
   "author": {
     "name": "raffishquartan",
