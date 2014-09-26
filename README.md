@@ -51,19 +51,19 @@ grunt.initConfig({
 ### Options
 
 #### options.out
-Type: `String`
-Purpose: Output file path to write to
-Default value: None, required
+- Type: `String`
+- Purpose: Output file path to write to
+- Default value: None, required
 
 #### options.generator_list
-Type: `Array` of ``String`
-Purpose: Specify the list of version file value generators to use
-Default value: ["datestring", "npm_version"]
+- Type: `Array` of ``String`
+- Purpose: Specify the list of version file value generators to use
+- Default value: ["datestring", "npm_version"]
 
 #### options.generator_dir
-Type: `String`
-Purpose: Specify the path to the directory with value generator definitions
-Default value: "generators"
+- Type: `String`
+- Purpose: Specify the path to the directory with value generator definitions
+- Default value: "generators"
 
 ### Generators
 
@@ -97,6 +97,7 @@ The following are bad, please feel free to fix them yourself :)
 ## Changelog
 
 - _0.1.0_ - Initial release
+- _0.1.1_ - Readme fixes and Travis CI
 
 ## License
 
