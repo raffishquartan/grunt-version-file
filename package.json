@@ -1,7 +1,7 @@
 {
   "name": "grunt-version-file",
-  "description": "ONE LINE DESCRIPTION TODO",
-  "version": "0.0.0",
+  "description": "Writes code provenance information to a JSON file for deployment alongside the application",
+  "version": "0.1.0",
   "homepage": "https://github.com/raffishquartan/grunt-version-file",
   "author": {
     "name": "raffishquartan",
@@ -35,12 +35,13 @@
   "devDependencies": {
     "blanket": "^1.1",
     "grunt": "~0.4",
-    "grunt-contrib-clean": "^0.5",
+    "grunt-bump": "^0.0",
+    "grunt-contrib-clean": "^0.6",
     "grunt-contrib-jshint": "^0.10",
-    "grunt-coveralls": "^0.3",
-    "grunt-mocha-test": "^0.10",
+    "grunt-coveralls": "^1.0",
+    "grunt-mocha-test": "^0.12",
     "mocha-lcov-reporter": "^0.0",
-    "should": "^3.3",
+    "should": "^4.0",
     "travis-cov": "^0.2"
   },
   "peerDependencies": {
@@ -51,6 +52,8 @@
     "grunt",
     "build",
     "git",
-    "versioning"
+    "versioning",
+    "provenance",
+    "debugging"
   ]
 }
