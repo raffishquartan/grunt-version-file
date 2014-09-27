@@ -21,7 +21,8 @@ describe("VersionFileWriter", function() {
   var JSON_CREATOR_VALID = new JsonCreator({
     generator_manager: new GeneratorManager({
       generator_dir: "generators",
-      generator_list: ["datestring", "npm_version"]
+      generator_list: ["datestring", "npm_version"],
+      async_done: function() { return "stub-async-done"; }
     })
   });
   var OUT_VALID = "test/tmp/build/out/version.json";

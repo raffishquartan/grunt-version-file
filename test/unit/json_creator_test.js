@@ -19,7 +19,8 @@ describe("JsonCreator", function() {
 
   var GENERATOR_MANAGER_VALID = new GeneratorManager({
     generator_dir: "generators",
-    generator_list: ["datestring", "npm_version"]
+    generator_list: ["datestring", "npm_version"],
+    async_done: function() { return "stub-async-done-method"; }
   });
 
   it("constructor requires an options.generator_manager parameter", function() {
