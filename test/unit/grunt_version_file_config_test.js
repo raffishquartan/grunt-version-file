@@ -99,6 +99,23 @@ describe("GruntVersionFileConfig", function() {
     }).should.throw();
   });
 
+  it("throws an error if the generator_list is empty", function() {
+    var conf = {
+      out: OUT_FILEPATH_VALID,
+      generator_dir: GENERATOR_DIR_VALID,
+      generator_list: []
+    };
+    (function() {
+      var gvfc = new GruntVersionFileConfig(conf);
+    }).should.throw();
+  });
+
+  it("throws an error if the constructor parameter is undefined", function() {
+    (function() {
+      var gvfc = new GruntVersionFileConfig();
+    }).should.throw();
+  });
+
   it("returns the correct output path for the valid test config", function() {
     var gvfc = new GruntVersionFileConfig(CONFIG_VALID);
     gvfc.out_filepath().should.equal.OUT_FILEPATH_VALID;
