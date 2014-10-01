@@ -109,7 +109,6 @@ describe("GeneratorManager", function() {
       var gm = new GeneratorManager({
         generator_dir: GENERATOR_DIR_VALID,
         generator_list: GENERATOR_LIST_VALID,
-        async_done: ASYNC_DONE_STUB,
         extra: 1234
       });
     }).should.throw();
