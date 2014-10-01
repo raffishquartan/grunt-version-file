@@ -18,57 +18,91 @@ describe("VersionFileWriter", function() {
   var JsonCreator = require("../../lib/json_creator");
   var VersionFileWriter = require("../../lib/version_file_writer");
 
-  var JSON_CREATOR_VALID = new JsonCreator({
-    generator_manager: new GeneratorManager({
-      generator_dir: "generators",
-      generator_list: ["datestring", "npm_version"],
-      async_done: function() { return "stub-async-done"; }
-    })
+  var OUTPUT_CREATOR_VALID = new JsonCreator();
+  var GENERATOR_MANAGER_VALID = new GeneratorManager({
+    generator_dir: "generators",
+    generator_list: ["datestring", "npm_version"],
   });
   var OUT_VALID = "test/tmp/build/out/version.json";
+  var ASYNC_DONE_STUB = function() { return "stub-async-done"; };
 
   var VALID_OPTIONS = {
-    json_creator: JSON_CREATOR_VALID,
-    out: OUT_VALID
+    output_creator: OUTPUT_CREATOR_VALID,
+    generator_manager: GENERATOR_MANAGER_VALID,
+    out: OUT_VALID,
+    async_done: ASYNC_DONE_STUB
   };
 
-  it("has a write_version_file method", function() {
-    var vfw = new VersionFileWriter();
-    vfw.write_version_file.should.be.a.Function;
-    typeof(vfw.write_version_file).should.be.a.Function;
-  });
-
-  it("write_version_file requires options.json_creator", function() {
-    var vfw = new VersionFileWriter();
+  it("constructor requires options.output_creator", function() {
     (function() {
-      vfw.write_version_file({
-        out: OUT_VALID
+      var vfw = new VersionFileWriter({
+        generator_manager: GENERATOR_MANAGER_VALID,
+        out: OUT_VALID,
+        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
 
-  it("write_version_file requires options.out", function() {
-    var vfw = new VersionFileWriter();
+  it("constructor requires options.generator_manager", function() {
     (function() {
-      vfw.write_version_file({
-        json_creator: JSON_CREATOR_VALID
+      var vfw = new VersionFileWriter({
+        output_creator: OUTPUT_CREATOR_VALID,
+        out: OUT_VALID,
+        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
 
-  it("write_version_file requires options.out to be a string", function() {
-    var vfw = new VersionFileWriter();
+  it("constructor requires options.out", function() {
     (function() {
-      vfw.write_version_file({
-        json_creator: JSON_CREATOR_VALID,
+      var vfw = new VersionFileWriter({
+        output_creator: OUTPUT_CREATOR_VALID,
+        generator_manager: GENERATOR_MANAGER_VALID,
+        async_done: ASYNC_DONE_STUB
+      });
+    }).should.throw();
+  });
+
+  it("constructor requires options.out to be a string", function() {
+    (function() {
+      var vfw = new VersionFileWriter({
+        output_creator: OUTPUT_CREATOR_VALID,
+        generator_manager: GENERATOR_MANAGER_VALID,
+        async_done: ASYNC_DONE_STUB,
         out: 1
       });
     }).should.throw();
   });
 
-  it("writes valid options correctly", function() {
+  it("constructor requires options.async_done", function() {
+    (function() {
+      var vfw = new VersionFileWriter({
+        output_creator: OUTPUT_CREATOR_VALID,
+        generator_manager: GENERATOR_MANAGER_VALID,
+        out: OUT_VALID
+      });
+    }).should.throw();
+  });
+
+  it("constructor requires options.async_done to be a function", function() {
+    (function() {
+      var vfw = new VersionFileWriter({
+        output_creator: OUTPUT_CREATOR_VALID,
+        generator_manager: GENERATOR_MANAGER_VALID,
+        out: OUT_VALID,
+        async_done: "will not work"
+      });
+    }).should.throw();
+  });
+
+  it("has a write_version_file method", function() {
     var vfw = new VersionFileWriter();
-    vfw.write_version_file(VALID_OPTIONS);
+    vfw.write_version_file.should.be.a.Function;
+  });
+
+  it.skip("writes valid options correctly", function() {
+    var vfw = new VersionFileWriter(VALID_OPTIONS);
+    vfw.write_version_file();
     // TODO: After write is completed, test that written file matches expected string
   });
 });
