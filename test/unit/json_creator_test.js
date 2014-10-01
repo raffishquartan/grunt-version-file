@@ -14,27 +14,24 @@
 
 describe("JsonCreator", function() {
   var should = require("should");
-  var GeneratorManager = require("../../lib/generator_manager");
   var JsonCreator = require("../../lib/json_creator");
 
-  var GENERATOR_MANAGER_VALID = new GeneratorManager({
-    generator_dir: "generators",
-    generator_list: ["datestring", "npm_version"],
-    async_done: function() { return "stub-async-done-method"; }
-  });
+  var VALID_STUB_OBJECT_STORE = {};
 
-  it("constructor requires an options.generator_manager parameter", function() {
-    (function() {
-      var jc = new JsonCreator({});
-    }).should.throw();
-  });
-
-  it("has a create_json_string method that returns a string", function() {
-    var jc = new JsonCreator({
-      generator_manager: GENERATOR_MANAGER_VALID
-    });
+  it("has a create_string method that returns a string", function() {
+    var jc = new JsonCreator();
     jc.create_json_string.should.be.a.Function;
-    jc.create_json_string().should.be.a.String;
+    jc.create_json_string(VALID_STUB_OBJECT_STORE).should.be.a.String;
+  });
+
+  it("has a create_string method that requires an object_store object arg", function() {
+    var jc = new JsonCreator();
+    (function() {
+      jc.create_string();
+    }).should.throw();
+    (function() {
+      jc.create_string("foo");
+    }).should.throw();
   });
 
   it.skip("has a create_json_string method that works as expected", function() {
