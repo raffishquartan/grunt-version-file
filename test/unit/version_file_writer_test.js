@@ -96,7 +96,7 @@ describe("VersionFileWriter", function() {
   });
 
   it("has a write_version_file method", function() {
-    var vfw = new VersionFileWriter();
+    var vfw = new VersionFileWriter(VALID_OPTIONS);
     vfw.write_version_file.should.be.a.Function;
   });
 
