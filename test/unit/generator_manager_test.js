@@ -17,19 +17,16 @@ describe("GeneratorManager", function() {
 
   var GENERATOR_DIR_VALID = "generators";
   var GENERATOR_LIST_VALID = ["datestring", "npm_version"];
-  var ASYNC_DONE_STUB = function() {};
 
   var CONFIG_VALID = {
     generator_dir: GENERATOR_DIR_VALID,
     generator_list: GENERATOR_LIST_VALID,
-    async_done: ASYNC_DONE_STUB
   };
 
   it("requires an options.generator_dir constructor argument", function() {
     (function() {
       var gm = new GeneratorManager({
         generator_list: GENERATOR_LIST_VALID,
-        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
@@ -39,7 +36,6 @@ describe("GeneratorManager", function() {
       var gm = new GeneratorManager({
         generator_list: GENERATOR_LIST_VALID,
         generator_dir: 1,
-        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
@@ -49,7 +45,6 @@ describe("GeneratorManager", function() {
       var gm = new GeneratorManager({
         generator_list: GENERATOR_LIST_VALID,
         generator_dir: "does-not-exist",
-        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
@@ -58,7 +53,6 @@ describe("GeneratorManager", function() {
     (function() {
       var gm = new GeneratorManager({
         generator_dir: GENERATOR_DIR_VALID,
-        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
@@ -67,8 +61,7 @@ describe("GeneratorManager", function() {
     (function() {
       var gm = new GeneratorManager({
         generator_dir: GENERATOR_DIR_VALID,
-        generator_list: "datestring",
-        async_done: ASYNC_DONE_STUB
+        generator_list: "datestring-not-an-array",
       });
     }).should.throw();
   });
@@ -78,7 +71,6 @@ describe("GeneratorManager", function() {
       var gm = new GeneratorManager({
         generator_dir: GENERATOR_DIR_VALID,
         generator_list: GENERATOR_LIST_VALID.concat(GENERATOR_LIST_VALID),
-        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
@@ -88,7 +80,6 @@ describe("GeneratorManager", function() {
       var gm = new GeneratorManager({
         generator_dir: GENERATOR_DIR_VALID,
         generator_list: [],
-        async_done: ASYNC_DONE_STUB
       });
     }).should.throw();
   });
@@ -109,26 +100,6 @@ describe("GeneratorManager", function() {
       var gm = new GeneratorManager({
         generator_dir: GENERATOR_DIR_VALID,
         generator_list: ["not_valid_generator"],
-        async_done: ASYNC_DONE_STUB
-      });
-    }).should.throw();
-  });
-
-  it("requires an options.async_done constructor argument", function() {
-    (function() {
-      var gm = new GeneratorManager({
-        generator_dir: GENERATOR_DIR_VALID,
-        generator_list: GENERATOR_LIST_VALID
-      });
-    }).should.throw();
-  });
-
-  it("throws an error if async_done is not a function", function() {
-    (function() {
-      var gm = new GeneratorManager({
-        generator_dir: GENERATOR_DIR_VALID,
-        generator_list: GENERATOR_LIST_VALID,
-        async_done: "not-a-function"
       });
     }).should.throw();
   });
@@ -154,9 +125,5 @@ describe("GeneratorManager", function() {
       var gen = GENERATOR_LIST_VALID[i];
       object_store[gen].should.not.equal.undefined;
     }
-  });
-
-  it.skip("calls async_done after adding all generator labels/values", function() {
-    // TODO - implement using a mock of async_done method
   });
 });
