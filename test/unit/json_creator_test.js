@@ -20,8 +20,8 @@ describe("JsonCreator", function() {
 
   it("has a create_string method that returns a string", function() {
     var jc = new JsonCreator();
-    jc.create_json_string.should.be.a.Function;
-    jc.create_json_string(VALID_STUB_OBJECT_STORE).should.be.a.String;
+    jc.create_string.should.be.a.Function;
+    jc.create_string(VALID_STUB_OBJECT_STORE).should.be.a.String;
   });
 
   it("has a create_string method that requires an object_store object arg", function() {
