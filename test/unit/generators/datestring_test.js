@@ -16,13 +16,8 @@ describe("DatestringGenerator", function() {
   var should = require("should");
   var datestring = require("../../../lib/generators/datestring");
 
-  it("specifies a label method that returns a string", function() {
-    datestring.label.should.be.a.Function;
-    datestring.label().should.be.a.String;
-  });
-
-  it("specifies a value method that returns a string", function() {
-    datestring.value.should.be.a.Function;
-    datestring.value().should.be.a.String;
+  it.skip("specifies a label_value method that returns a promise object", function() {
+    datestring.label_value.should.be.a.Function;
+    datestring.label_value().should.be.a.Object; // TODO make this test better
   });
 });
