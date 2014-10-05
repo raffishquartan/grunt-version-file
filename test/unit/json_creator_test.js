@@ -24,7 +24,7 @@ describe("JsonCreator", function() {
     jc.create_string(VALID_STUB_OBJECT_STORE).should.be.a.String;
   });
 
-  it("has a create_string method that requires an object_store object arg", function() {
+  it("has a create_string method that requires an object_store arg", function() {
     var jc = new JsonCreator();
     (function() {
       jc.create_string();
