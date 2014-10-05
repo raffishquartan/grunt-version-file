@@ -16,8 +16,17 @@ describe("NpmVersionGenerator", function() {
   var should = require("should");
   var npm_version = require("../../../lib/generators/npm_version");
 
-  it("specifies a label_value method that returns a promise object", function() {
+  it("specifies a label_value method that returns a then'able object", function() {
     npm_version.label_value.should.be.a.Function;
-    npm_version.label_value().should.be.a.Object; // TODO make this test better
+    npm_version.label_value().should.be.a.Object;
+    npm_version.label_value().then.should.be.a.Function;
   });
+
+  it("the then'able object resolves to an object with label and value", function() {
+    npm_version.label_value().then(function(result) {
+      result.label.should.not.be.undefined;
+      result.label.should.be.a.String;
+      result.value.should.not.be.undefined;
+    });
+  })
 });

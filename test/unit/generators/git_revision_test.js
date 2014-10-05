@@ -16,8 +16,17 @@ describe("GitRevisionGenerator", function() {
   var should = require("should");
   var git_revision = require("../../../lib/generators/git_revision");
 
-  it.skip("specifies a label_value method that returns a promise object", function() {
+  it.skip("specifies a label_value method that returns a then'able object", function() {
     git_revision.label_value.should.be.a.Function;
-    git_revision.label_value().should.be.a.Object; // TODO make this test better
+    git_revision.label_value().should.be.a.Object;
+    git_revision.label_value().then.should.be.a.Function;
   });
+
+  it.skip("the then'able object resolves to an object with a label and value", function() {
+    git_revision.label_value().then(function(result) {
+      result.label.should.not.be.undefined;
+      result.label.should.be.a.String;
+      result.value.should.not.be.undefined;
+    })
+  })
 });
