@@ -41,7 +41,7 @@
     "grunt-coveralls": "^1.0",
     "grunt-mocha-test": "^0.12",
     "mocha-lcov-reporter": "^0.0",
-    "q": "^1.0",
+    "q": "^2.0",
     "should": "^4.0",
     "travis-cov": "^0.2"
   },
