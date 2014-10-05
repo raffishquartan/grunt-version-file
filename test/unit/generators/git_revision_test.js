@@ -27,6 +27,6 @@ describe("GitRevisionGenerator", function() {
       result.label.should.not.be.undefined;
       result.label.should.be.a.String;
       result.value.should.not.be.undefined;
-    })
-  })
+    });
+  });
 });

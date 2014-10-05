@@ -28,5 +28,5 @@ describe("NpmVersionGenerator", function() {
       result.label.should.be.a.String;
       result.value.should.not.be.undefined;
     });
-  })
+  });
 });
