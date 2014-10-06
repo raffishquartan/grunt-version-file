@@ -114,15 +114,23 @@ describe("GeneratorManager", function() {
     }).should.throw();
   });
 
+  it("returns a then'able from generate", function() {
+    var gm = new GeneratorManager(CONFIG_VALID);
+    var result = gm.generate();
+    result.should.not.be.undefined;
+    result.should.be.an.Object;
+    result.then.should.be.a.Function;
+  });
+
   it("adds all generator labels/values to object_store argument", function() {
     var gm = new GeneratorManager(CONFIG_VALID);
-    var object_store = {};
-    gm.apply_generators(object_store);
-    var expected_length = GENERATOR_LIST_VALID.length;
-    Object.keys(object_store).length.should.equal.expected_length;
-    for(var i in GENERATOR_LIST_VALID) {
-      var gen = GENERATOR_LIST_VALID[i];
-      object_store[gen].should.not.equal.undefined;
-    }
+    gm.generate().then(function(object_store) {
+      var expected_length = GENERATOR_LIST_VALID.length;
+      Object.keys(object_store).length.should.equal.expected_length;
+      for(var i in GENERATOR_LIST_VALID) {
+        var gen = GENERATOR_LIST_VALID[i];
+        object_store[gen].should.not.equal.undefined;
+      }
+    });
   });
 });
