@@ -67,9 +67,17 @@ describe("GeneratorFactory", function() {
     generator.init.should.be.a.Function;
   });
 
+  it("... that throws an error if it has a second non-init option", function() {
+    var gf = new GeneratorFactory();
+    var config = { label_value: function() {}, foo: function() {} };
+    (function() {
+      var generator = gf.create(config);
+    }).should.throw();
+  });
+
   it("... that throws an error if extra options are present", function() {
     var gf = new GeneratorFactory();
-    var config_with_extra = { label_value: function() {}, foo: function() {} };
+    var config_with_extra = { label_value: function() {}, init: function() {}, foo: function() {} };
     (function() {
       gf.create(config_with_extra);
     }).should.throw();

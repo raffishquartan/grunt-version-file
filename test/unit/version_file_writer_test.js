@@ -33,6 +33,12 @@ describe("VersionFileWriter", function() {
     async_done: ASYNC_DONE_STUB
   };
 
+  it("throws an error if no options are passed to consructor", function() {
+    (function() {
+      var vfw = new VersionFileWriter();
+    }).should.throw();
+  });
+
   it("constructor requires options.output_creator", function() {
     (function() {
       var vfw = new VersionFileWriter({
@@ -91,6 +97,18 @@ describe("VersionFileWriter", function() {
         generator_manager: GENERATOR_MANAGER_VALID,
         out: OUT_VALID,
         async_done: "will not work"
+      });
+    }).should.throw();
+  });
+
+  it("throws an error if extra options are passed to ctor", function() {
+    (function() {
+      var vfw = new VersionFileWriter({
+        output_creator: OUTPUT_CREATOR_VALID,
+        generator_manager: GENERATOR_MANAGER_VALID,
+        out: OUT_VALID,
+        async_done: ASYNC_DONE_STUB,
+        extra_option_to_ctor: "foo"
       });
     }).should.throw();
   });
