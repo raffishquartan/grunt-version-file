@@ -16,7 +16,7 @@ describe("GeneratorManager", function() {
   var GeneratorManager = require("../../lib/generator_manager");
 
   var GENERATOR_DIR_VALID = "generators";
-  var GENERATOR_LIST_VALID = ["datestring", "npm_version"];
+  var GENERATOR_LIST_VALID = ["datestring", "npm_version", "git_revision"];
 
   var CONFIG_VALID = {
     generator_dir: GENERATOR_DIR_VALID,
