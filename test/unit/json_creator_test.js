@@ -17,6 +17,10 @@ describe("JsonCreator", function() {
   var JsonCreator = require("../../lib/json_creator");
 
   var VALID_STUB_OBJECT_STORE = {};
+  var TEST_OBJECT_STORE = {
+    label: "value",
+  };
+  var TEST_OUTPUT_STRING = "{\n  \"label\": \"value\"\n}";
 
   it("has a create_string method that returns a string", function() {
     var jc = new JsonCreator();
@@ -34,7 +38,8 @@ describe("JsonCreator", function() {
     }).should.throw();
   });
 
-  it.skip("has a create_json_string method that works as expected", function() {
-    // TODO implement using mocks in a way that doesn't depend on the actual day or version
+  it("has a create_string method that works as expected", function() {
+    var jc = new JsonCreator();
+    jc.create_string(TEST_OBJECT_STORE).should.equal.TEST_OUTPUT_STRING;
   });
 });
