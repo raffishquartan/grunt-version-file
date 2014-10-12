@@ -14,29 +14,32 @@
 
 describe("JsonCreator", function() {
   var should = require("should");
-  var GeneratorManager = require("../../lib/generator_manager");
   var JsonCreator = require("../../lib/json_creator");
 
-  var GENERATOR_MANAGER_VALID = new GeneratorManager({
-    generator_dir: "generators",
-    generator_list: ["datestring", "npm_version"]
+  var VALID_STUB_OBJECT_STORE = {};
+  var TEST_OBJECT_STORE = {
+    label: "value",
+  };
+  var TEST_OUTPUT_STRING = "{\n  \"label\": \"value\"\n}";
+
+  it("has a create_string method that returns a string", function() {
+    var jc = new JsonCreator();
+    jc.create_string.should.be.a.Function;
+    jc.create_string(VALID_STUB_OBJECT_STORE).should.be.a.String;
   });
 
-  it("constructor requires an options.generator_manager parameter", function() {
+  it("has a create_string method that requires an object_store arg", function() {
+    var jc = new JsonCreator();
     (function() {
-      var jc = new JsonCreator({});
+      jc.create_string();
+    }).should.throw();
+    (function() {
+      jc.create_string("foo");
     }).should.throw();
   });
 
-  it("has a create_json_string method that returns a string", function() {
-    var jc = new JsonCreator({
-      generator_manager: GENERATOR_MANAGER_VALID
-    });
-    jc.create_json_string.should.be.a.Function;
-    jc.create_json_string().should.be.a.String;
-  });
-
-  it.skip("has a create_json_string method that works as expected", function() {
-    // TODO implement using mocks in a way that doesn't depend on the actual day or version
+  it("has a create_string method that works as expected", function() {
+    var jc = new JsonCreator();
+    jc.create_string(TEST_OBJECT_STORE).should.equal.TEST_OUTPUT_STRING;
   });
 });

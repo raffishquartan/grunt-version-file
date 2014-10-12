@@ -60,6 +60,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // To submit coverage to coveralls.io run COVERALLS_REPO_TOKEN=<token_val>
     coveralls: {
       options: {
         force: true
