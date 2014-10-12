@@ -32,6 +32,9 @@
   "scripts": {
     "test": "grunt test"
   },
+  "dependencies": {
+    "q": "^2.0"
+  },
   "devDependencies": {
     "blanket": "^1.1",
     "grunt": "~0.4",

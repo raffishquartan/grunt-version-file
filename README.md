@@ -109,6 +109,7 @@ The following could be better, code contributions welcome :)
 - _0.1.0_ - Initial release
 - _0.1.1_ - Readme fixes and Travis CI
 - _0.2.0_ - Async generators, generalised output creator API for easy generation of other output formats
+- _0.2.1_ - Bug fix - added missing `q` dependency
 
 ## License
 
