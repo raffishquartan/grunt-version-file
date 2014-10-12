@@ -17,8 +17,9 @@ An example version file:
 
 ```js
 {
-  "datestring": "Fri Sep 27 2014 08:50:50"
-  "npm_version": "0.1.4"
+  "datestring": "Sun Oct 12 2014 13:21:08",
+  "npm_version": "1.0.1",
+  "git_describe": "v0.1.4-0-g8209160"
 }
 ```
 
@@ -67,7 +68,7 @@ grunt.initConfig({
 #### options.generator_list
 - Type: `Array` of ``String`
 - Purpose: Specify the list of version file value generators to use
-- Default value: ["datestring", "npm_version"]
+- Default value: ["datestring", "npm_version", "git_describe"]
 
 #### options.generator_dir
 - Type: `String`
@@ -78,15 +79,13 @@ grunt.initConfig({
 
 grunt-version-file uses a plugin architecture to generate key value-entries for code provenance. It is deployed wih several generators and you can easily create your own. Please make a pull request if you do!
 
-A genereator plugin is made available to the grunt-version-file plugin via a javascript file which exports an object with a `label` function, a `value` function and (optionally) an `init` function. These functions must operate synchronously and must wait for any asynchronous operations to complete before returning to their caller.
+A generator plugin is made available to the grunt-version-file plugin via a javascript file which exports an object with a `label` function, a `value` function and (optionally) an `init` function. These functions must operate synchronously and must wait for any asynchronous operations to complete before returning to their caller.
 
-The `label` function returns the JSON-valid string label for this generator's field in the version file.
-
-The `value` function returns the (possibly build-specific) value of this generator's field in the version file.
+The `label_value` function an object containing a label field with the String label for this generator and a value field containing the (possibly build-specific) String value of this generator's field for the version file.
 
 The `init` function is executed before the value or label function are called.
 
-A generator's name in the `generator_list` option is the filename without the .js extension. It is recommended that this is the same as the result of calling `label`, but it is not required.
+A generator's name in the `generator_list` option is the filename without the .js extension. It is recommended that this is the same as the generator's label, but it is not required.
 
 ## Contributing
 
@@ -96,18 +95,20 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 To add a generator create a new file in the `lib/generators` directory which exports an object with a `label`, `value` and optionally an `init` function. See the included generators for examples.
 
-### Code smells
+### Code smells and future development
 
-The following are bad, contributed fixes welcome :)
+The following could be better, code contributions welcome :)
 
-- The tests don't use mocks, they should
-- The generator init functions are not executed at construction and initialisation but just before the value and label methods are called.
+- The tests don't use mock objects for GVF classes, they should
+- Stub functions are used in tests in place of Grunt's Task.done() or a mock
+- The generator init functions are not executed at construction and initialisation but just before label_value is called
+- Further generalise output_creator (e.g. add XmlCreator), specify which to use via the Gruntfile configuration
 
 ## Changelog
 
 - _0.1.0_ - Initial release
 - _0.1.1_ - Readme fixes and Travis CI
-- _0.2.0_ - Async generators
+- _0.2.0_ - Async generators, generalised output creator API for easy generation of other output formats
 
 ## License
 
