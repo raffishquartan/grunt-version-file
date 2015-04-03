@@ -45,7 +45,7 @@
     "grunt-mocha-test": "0.12.x",
     "mocha-lcov-reporter": "0.0.x",
     "q": "2.0.x",
-    "should": "4.0.x",
+    "should": "5.2.x",
     "travis-cov": "0.2.x"
   },
   "peerDependencies": {
