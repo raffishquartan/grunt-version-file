@@ -40,7 +40,7 @@
     "grunt": "0.4.x",
     "grunt-bump": "0.3.x",
     "grunt-contrib-clean": "0.6.x",
-    "grunt-contrib-jshint": "0.10.x",
+    "grunt-contrib-jshint": "0.11.x",
     "grunt-coveralls": "1.0.x",
     "grunt-mocha-test": "0.12.x",
     "mocha-lcov-reporter": "0.0.x",
