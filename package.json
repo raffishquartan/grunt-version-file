@@ -38,7 +38,7 @@
   "devDependencies": {
     "blanket": "1.1.x",
     "grunt": "0.4.x",
-    "grunt-bump": "0.0.x",
+    "grunt-bump": "0.3.x",
     "grunt-contrib-clean": "0.6.x",
     "grunt-contrib-jshint": "0.10.x",
     "grunt-coveralls": "1.0.x",
