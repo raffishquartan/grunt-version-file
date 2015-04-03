@@ -33,20 +33,20 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "q": "^2.0"
+    "q": "2.0.x"
   },
   "devDependencies": {
-    "blanket": "^1.1",
-    "grunt": "~0.4",
-    "grunt-bump": "^0.0",
-    "grunt-contrib-clean": "^0.6",
-    "grunt-contrib-jshint": "^0.10",
-    "grunt-coveralls": "^1.0",
-    "grunt-mocha-test": "^0.12",
-    "mocha-lcov-reporter": "^0.0",
-    "q": "^2.0",
-    "should": "^4.0",
-    "travis-cov": "^0.2"
+    "blanket": "1.1.x",
+    "grunt": "0.4.x",
+    "grunt-bump": "0.0.x",
+    "grunt-contrib-clean": "0.6.x",
+    "grunt-contrib-jshint": "0.10.x",
+    "grunt-coveralls": "1.0.x",
+    "grunt-mocha-test": "0.12.x",
+    "mocha-lcov-reporter": "0.0.x",
+    "q": "2.0.x",
+    "should": "4.0.x",
+    "travis-cov": "0.2.x"
   },
   "peerDependencies": {
     "grunt": "~0.4.4"
