@@ -49,7 +49,7 @@ grunt.initConfig({
     version_file: {
       make: {
         options: {
-          out: ["some/file/path.json"],
+          out: "some/file/path.json",
           generator_list: ["foo", "bar"],
           generator_dir: "some_directory_in_grunt_version_file"
         }
@@ -103,6 +103,7 @@ The following could be better, code contributions welcome :)
 - Stub functions are used in tests in place of Grunt's Task.done() or a mock
 - The generator init functions are not executed at construction and initialisation but just before label_value is called
 - Further generalise output_creator (e.g. add XmlCreator), specify which to use via the Gruntfile configuration
+- Allow `options.out` to specify multiple files to write output to
 
 ## Changelog
 
